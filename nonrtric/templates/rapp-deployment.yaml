@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rapp-catalog
+  labels:
+    app: rapp-catalog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rapp-catalog
+  template:
+    metadata:
+      labels:
+        app: rapp-catalog
+    spec:
+      containers:
+        - name: rapp-catalog
+          image: nexus3.o-ran-sc.org:10002/o-ran-sc/nonrtric-plt-rappcatalogue-enhanced:1.2.0
+          env:
+            - name: ALLOW_HTTP
+              value: "true"
+          ports:
+            - containerPort: 9196
+            - containerPort: 9096

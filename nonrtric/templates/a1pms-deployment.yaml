@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: a1pms
+  labels:
+    app: a1pms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: a1pms
+  template:
+    metadata:
+      labels:
+        app: a1pms
+    spec:
+      containers:
+        - name: a1pms
+          image: nexus3.o-ran-sc.org:10002/o-ran-sc/nonrtric-plt-a1policymanagementservice:2.8.1
+          volumeMounts:
+            - name: config-volume
+              mountPath: /opt/app/policy-agent/data/application_configuration.json
+              subPath: application_configuration.json
+          ports:
+            - containerPort: 8081
+            - containerPort: 8043
+      volumes:
+        - name: config-volume
+          configMap:
+            name: a1pms-config

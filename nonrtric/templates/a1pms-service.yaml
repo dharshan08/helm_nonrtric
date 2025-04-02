@@ -1,0 +1,15 @@
+piVersion: v1
+kind: Service
+metadata:
+  name: a1pms
+spec:
+  selector:
+    app: a1pms
+  ports:
+    - name: http
+      port: 8081
+      targetPort: 8081
+    - name: https
+      port: 8043
+      targetPort: 8043
+  type: ClusterIP 

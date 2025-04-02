@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: a1pms-config
+data:
+  application_configuration.json: |
+    {
+      "config": {
+        "ric": [
+          {
+            "name": "ric1",
+            "baseUrl": "http://ric1:8085/",
+            "managedElementIds": [
+              "kista_1",
+              "kista_2"
+            ]
+          },
+          {
+            "name": "ric2",
+            "baseUrl": "http://ric2:8085/",
+            "managedElementIds": [
+              "kista_3",
+              "kista_4"
+            ]
+          },
+          {
+            "name": "ric3",
+            "baseUrl": "http://ric3:8085/",
+            "managedElementIds": [
+              "kista_5",
+              "kista_6"
+            ]
+          }
+        ]
+      }
+    }
